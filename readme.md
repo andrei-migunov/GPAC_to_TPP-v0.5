@@ -5,14 +5,14 @@
 
 ## The transformation preserves the following property:
 
-## If the input system $G$ has a variable $a(t)$ with $\lim_{t \rightarrow \infty} a(t) = \gamma$ for some real value $\gamma$ (i.e, if $G \textit{computes} \gamma$) then the resulting TPP, T, also has a variable $a(t)$ with the same property. That is, the transformation preserves real-number computation in the limit, as well as boundedness (inherent to TPPs).
+## If the input system $G$ has a variable $a(t)$ with $\lim_{t \rightarrow \infty} a(t) = \gamma$ for some real value $\gamma$ (i.e, if $G$ computes $\gamma$) then the resulting TPP, T, also has a variable $a(t)$ with the same property. That is, the transformation preserves real-number computation in the limit, as well as boundedness (inherent to TPPs).
 
-An example of the full compilation process history can be found in Test4Out.txt: An input system computing Euler's Gamma (.577...) is transformed first into a chemical reaction network, and finally into a termolecular population protocol. However, it is very long, and the resulting population protocol is of an immense size.
+An example of the full compilation process history can be found in Test4Out.txt: An input system computing Euler's $\gamma$ ($.577$...) is transformed first into a chemical reaction network, and finally into a termolecular population protocol. However, it is very long, and the resulting population protocol is of an immense size.
 
 ### The transformation goes like this:
 
-1. The input system G is given along with an initial condition. The 'main variable' (which converges to some value) is supplied, and the transformation keeps track of this special variable.
-2. If selected, the input is pre-processed: G is transformed into G' having initial value 0 for all variables, and computing the same value in the limit. (The alternative is not yet implemented - i.e. the transformations of non-zero initial values between phases. Pre-processing should always be selected, unless the input system has 0 initial values.)
+1. The input system $G$ is given along with an initial condition. The 'main variable' (which converges to some value) is supplied, and the transformation keeps track of this special variable.
+2. If selected, the input is pre-processed: $G$ is transformed into $G'$ having initial value 0 for all variables, and computing the same value in the limit. (The alternative is not yet implemented - i.e. the transformations of non-zero initial values between phases. Pre-processing should always be selected, unless the input system has 0 initial values.)
 3. If the resulting system is not a chemical reaction network (does not have the form $y' = p_y - q_y * y$) then a selective dual railing algorithm converts a minimal set of variables into dual-rail representation, ensuring that the reusulting system $C$ is a CRN. If pre-processing was selected, then this CRN will also have initial values uniformly 0.
 4. Next, a greedy decomposition algorithm reduces the degree of $C$ to (non-homogeneously) 2, resulting in system $C_2$ also with all-0 initial values. This requires introducing a (often very large) number of auxiliary variables. There are \textit{many} variations of this decomposition strategy, and currently the strategy used here is not very 'smart'. You can find some discussion and examples [here](https://github.com/andrei-migunov/Deterministic-CRN-to-Degree-2-CRN). $C_2$ is, again, a non-homogeneously degree 2 system: some terms may have degree less than 2.
 5. The degree-2 system is transformed into a homogeneously degree-3 conservative system (a termolecular population protocol).
@@ -73,3 +73,7 @@ Install NumPy first to lock the ABI:
 
 Then, install from requirements.txt:
 `python -m pip install --no-cache-dir -r requirements.txt` 
+
+Acknowledgements:
+
+Thank you to those who have contributed or continue to contribute to this project both at the theoretical level and the software level: Nicholas Haisler (Drake), Katja Mathesius (Drake, now North Carolina State University), Garrett Provence (Drake), Khalid Mohammed (Drake), and Xiang Huang (University of Illinois - Springfield). 
