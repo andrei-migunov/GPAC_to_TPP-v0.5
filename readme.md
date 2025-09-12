@@ -1,13 +1,15 @@
 
-This compiler transforms a bounded general-purpose analog compouter (GPAC), i.e., a polynomial initial value problem (PIVP), into a termoleclar population protocol (TPP).
+ GPAC-TO-TPP
 
-The transformation preserves the following property:
+## This compiler transforms a bounded general-purpose analog compouter (GPAC), i.e., a polynomial initial value problem (PIVP), into a termoleclar population protocol (TPP).
 
-If the input system $G$ has a variable $a(t)$ with $\lim_{t \rightarrow \infty} a(t) = \gamma$ for some real value $\gamma$ (i.e, if $G \textit{computes} \gamma$) then the resulting TPP, T, also has a variable $a(t)$ with the same property. That is, the transformation preserves real-number computation in the limit, as well as boundedness (inherent to TPPs).
+## The transformation preserves the following property:
+
+## If the input system $G$ has a variable $a(t)$ with $\lim_{t \rightarrow \infty} a(t) = \gamma$ for some real value $\gamma$ (i.e, if $G \textit{computes} \gamma$) then the resulting TPP, T, also has a variable $a(t)$ with the same property. That is, the transformation preserves real-number computation in the limit, as well as boundedness (inherent to TPPs).
 
 An example of the full compilation process history can be found in Test4Out.txt: An input system computing Euler's Gamma (.577...) is transformed first into a chemical reaction network, and finally into a termolecular population protocol. However, it is very long, and the resulting population protocol is of an immense size.
 
-The transformation goes like this:
+### The transformation goes like this:
 
 1. The input system G is given along with an initial condition. The 'main variable' (which converges to some value) is supplied, and the transformation keeps track of this special variable.
 2. If selected, the input is pre-processed: G is transformed into G' having initial value 0 for all variables, and computing the same value in the limit. (The alternative is not yet implemented - i.e. the transformations of non-zero initial values between phases. Pre-processing should always be selected, unless the input system has 0 initial values.)
@@ -17,7 +19,7 @@ The transformation goes like this:
 6. If selected, the resulting systems are simulated (options: "INPUT", "CRN", "DECOMP"). 
 
 
-Sample executions:
+### Sample executions:
 In `compile_tests.py` you can find a few sample GPAC inputs. You can run these from, say, VSCode, by swapping out the test name in the code at the bottom of that file:
  
 if __name__ == "__main__":
@@ -27,7 +29,7 @@ if __name__ == "__main__":
     test4v2()
     #test3()
 
-Command line inputs to the main function (`main.compile_from_file()`) are provided as follows:
+### Command line inputs to the main function (`main.compile_from_file()`) are provided as follows:
 
 `python main.py "test_one_over_e.txt"`
 
@@ -38,20 +40,20 @@ whose values can be de-seralized later on to avoid having to recompile.
 See `test_one_over_e.txt` for an example of input file format and flags. 
 
 
-General warnings:
+### General warnings:
 
 1. There are a number of unused functions hanging around from previous compilation workflows. This needs to be cleaned up, and we apologize for the inconvenience.
 2. Simulations is not guaranteed. The solvers are set to timeout after a few different solvers have been tried and the expected simtime (25, by default) has been reached on all of them.
 Many systems may seem small at first, but are very coupled, or have very high degree terms in them that result in simply massive output systems. Whether they can be simulated successfully depends on a lot of things. Use the simulation suite as your own risk. It is best to take the compilation output .pkl and make your own decisions about how to simulate. 
 
-In future versions:
+### In future versions:
 
 Bug fixes, and quality of life updates.
 Implementation of non-zero IV compilation pathway.
 Reduced system sizes.
 
 
-Some comments on installation:
+### Some comments on installation:
 
 You may want to do the following in a virtual environment (.venv) rather than on your main python installation. 
 
