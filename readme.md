@@ -7,7 +7,7 @@
 
 ## If the input system $G$ has a variable $a(t)$ with $\lim_{t \rightarrow \infty} a(t) = \gamma$ for some real value $\gamma$ (i.e, if $G$ computes $\gamma$) then the resulting TPP, T, also has a variable $a(t)$ with the same property. That is, the transformation preserves real-number computation in the limit, as well as boundedness (inherent to TPPs).
 
-An example of the full compilation process history can be found in Test4Out.txt: An input system computing Euler's $\gamma$ ($.577$...) is transformed first into a chemical reaction network, and finally into a termolecular population protocol. However, it is very long, and the resulting population protocol is of an immense size.
+An example of the full compilation process history can be found in Test4Out.txt: An input system computing Euler's $\gamma$ (= $.577$...) is transformed first into a chemical reaction network, and finally into a termolecular population protocol. However, it is very, very long, and the resulting population protocol is of an immense size. Future work will seek to optimize the output size.
 
 ### The transformation goes like this:
 
@@ -43,8 +43,8 @@ See `test_one_over_e.txt` for an example of input file format and flags.
 ### General warnings:
 
 1. There are a number of unused functions hanging around from previous compilation workflows. This needs to be cleaned up, and we apologize for the inconvenience.
-2. Simulations is not guaranteed. The solvers are set to timeout after a few different solvers have been tried and the expected simtime (25, by default) has been reached on all of them.
-Many systems may seem small at first, but are very coupled, or have very high degree terms in them that result in simply massive output systems. Whether they can be simulated successfully depends on a lot of things. Use the simulation suite as your own risk. It is best to take the compilation output .pkl and make your own decisions about how to simulate. 
+2. Simulation is not guaranteed. The solvers are set to time out after a few different solvers have been tried and the expected simtime (25, by default) has been reached on all of them.
+Many systems may seem small at first, but are very coupled, or have very high degree terms in them that result in simply massive output systems. Whether they can be simulated successfully depends on a lot of things. Use the simulation suite at your own risk. It is suggested to take the compilation output .pkl file, unpickle it in your own code, and make your own decisions about how to simulate. 
 
 ### In future versions:
 
@@ -75,5 +75,6 @@ Then, install from requirements.txt:
 `python -m pip install --no-cache-dir -r requirements.txt` 
 
 Acknowledgements:
+
 
 Thank you to those who have contributed or continue to contribute to this project both at the theoretical level and the software level: Nicholas Haisler (Drake), Katja Mathesius (Drake, now North Carolina State University), Garrett Provence (Drake), Khalid Mohammed (Drake), and Xiang Huang (University of Illinois - Springfield). 
