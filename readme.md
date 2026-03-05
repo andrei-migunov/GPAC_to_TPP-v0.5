@@ -78,3 +78,6 @@ Acknowledgements:
 
 
 Thank you to those who have contributed or continue to contribute to this project both at the theoretical level and the software level: Nicholas Haisler (Drake), Katja Mathesius (Drake, now North Carolina State University), Garrett Provence (Drake), Khalid Mohammed (Drake), and Xiang Huang (University of Illinois - Springfield). 
+
+This research and the development of this software was funded by U.S. Department of Energy grant DE-SC0024278
+
